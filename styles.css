@@ -1,0 +1,22 @@
+/* Carbon Bender - Custom Styles */
+
+body {
+  font-family: 'Georgia', serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Arial', sans-serif;
+  color: #2c5f2e;
+}
+
+.navbar {
+  background-color: #2c5f2e !important;
+}
+
+.navbar-brand, .nav-link {
+  color: white !important;
+}
+
+a {
+  color: #2c5f2e;
+}
