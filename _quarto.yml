@@ -1,0 +1,25 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Carbon Bender"
+  description: "Bending the curve on carbon, one analysis at a time."
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+      - href: posts/
+        text: Posts
+
+  page-footer:
+    center: "© 2026 Carbon Bender · tryabednego.github.io"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 2
