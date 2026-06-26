@@ -1,0 +1,26 @@
+---
+title: "About"
+---
+
+## Who is Carbon Bender?
+
+**Carbon Bender** is a pseudonymous analyst focused on the intersection 
+of data, energy, and climate. This blog exists to make sense of the 
+numbers behind the global decarbonisation transition — through clear 
+charts, honest analysis, and geographic context.
+
+## What you'll find here
+
+- Analysis of GHG emissions data at global, regional, and sector level
+- Decarbonisation pathway modelling and commentary
+- Interactive maps of energy and climate indicators
+- Commentary grounded in data, not ideology
+
+## Tools used
+
+Posts are produced using Python (pandas, plotly, folium) and 
+published with Quarto.
+
+## Contact
+
+*Coming soon.*
