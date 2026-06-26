@@ -1,0 +1,21 @@
+---
+title: "Welcome to Carbon Bender"
+date: 2026-06-26
+categories: [announcement]
+description: "The first post — what this blog is about and what's coming."
+---
+
+## Hello, world.
+
+This is the first post on **Carbon Bender** — a blog dedicated to 
+data-driven analysis on GHG emissions, decarbonisation, and sustainability.
+
+## What's coming
+
+Future posts will include:
+
+- Emissions trend analysis by country and sector
+- Interactive maps of global energy transitions
+- Decarbonisation scenario modelling
+
+Stay tuned.
