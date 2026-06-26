@@ -1,0 +1,18 @@
+---
+title: "Carbon Bender"
+subtitle: "Bending the curve on carbon, one analysis at a time."
+page-layout: full
+---
+
+Welcome to **Carbon Bender** — a personal blog dedicated to data-driven 
+analysis on greenhouse gas emissions, decarbonisation pathways, and 
+sustainability transitions.
+
+Here you will find:
+
+- 📊 **Data analysis** — charts and statistics on emissions trends
+- 🗺️ **Maps** — geographic visualisations of climate and energy data  
+- 💡 **Commentary** — insights on decarbonisation policy and progress
+
+Browse the latest posts below, or visit the [About](about.qmd) page 
+to learn more.
