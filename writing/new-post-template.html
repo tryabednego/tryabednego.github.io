@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>Post title | Carbon Bender</title>
+<meta name="description" content="One sentence describing this post. It appears when the link is shared on LinkedIn.">
+<meta name="author" content="Try Hutomo Abednego">
+<meta property="og:site_name" content="Carbon Bender">
+<meta property="og:title" content="Post title | Carbon Bender">
+<meta property="og:description" content="One sentence describing this post. It appears when the link is shared on LinkedIn.">
+<meta property="og:type" content="article">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23edf0eb'/%3E%3Cpath d='M4 12 L14 11 C20 10.5 23 17 28 26' fill='none' stroke='%232846a0' stroke-width='2.6' stroke-linecap='round'/%3E%3Cpath d='M14 11 L28 9' fill='none' stroke='%239a6a14' stroke-width='1.6' stroke-dasharray='2 2.4' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,400;0,500;1,400&family=IBM+Plex+Sans:ital,wght@0,400;0,500;1,400&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap">
+<style>
+/* Layout: drafting-sheet grid. Headings hang in a left column, text runs in the middle, notes sit in a right margin like annotations on an engineering drawing. */
+:root {
+  --paper: #edf0eb;      /* drafting vellum */
+  --paper-2: #e3e8e2;    /* slightly deeper sheet for figure slots */
+  --ink: #17262a;        /* slate ink */
+  --ink-2: #4c5d5c;      /* secondary text */
+  --rule: #c2cbc3;       /* pencil rules */
+  --blue: #2846a0;       /* blueprint ink: links, process streams */
+  --ochre: #9a6a14;      /* markup pencil: annotations */
+
+  --f-display: "Spectral", "Iowan Old Style", Georgia, serif;
+  --f-body: "IBM Plex Sans", "Segoe UI", Helvetica, Arial, sans-serif;
+  --f-note: "IBM Plex Sans Condensed", "Arial Narrow", "IBM Plex Sans", sans-serif;
+
+  --s-1: 0.8rem; --s0: 1rem; --s1: 1.25rem; --s2: 1.563rem; --s3: 1.953rem; --s4: 2.441rem;
+  --gutter-x: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-x-r: max(16px, env(safe-area-inset-right, 0px));
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #131b1d; --paper-2: #1a2427; --ink: #e2e8e1; --ink-2: #9aa9a5;
+    --rule: #2f3c3d; --blue: #92aaf2; --ochre: #d8a64c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #131b1d; --paper-2: #1a2427; --ink: #e2e8e1; --ink-2: #9aa9a5;
+  --rule: #2f3c3d; --blue: #92aaf2; --ochre: #d8a64c; color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  font-feature-settings: "kern", "liga";
+}
+a { color: var(--blue); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 2px; }
+p { margin: 0; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; margin: 0; text-wrap: balance; }
+
+.sheet {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: var(--gutter-x);
+  padding-right: var(--gutter-x-r);
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 28px;
+}
+.grid > * { min-width: 0; }
+
+/* Masthead */
+.masthead {
+  padding-block: 28px 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px 32px;
+}
+.masthead .name { font-family: var(--f-display); font-size: var(--s1); font-weight: 500; color: var(--ink); text-decoration: none; }
+.masthead .what { font-family: var(--f-note); color: var(--ink-2); font-size: 0.95rem; margin-left: 12px; }
+.masthead nav { display: flex; flex-wrap: wrap; gap: 4px 22px; font-size: 0.95rem; }
+.masthead nav a { color: var(--ink); text-decoration: none; border-bottom: 1px solid transparent; }
+.masthead nav a:hover { border-bottom-color: var(--ink); }
+
+/* Hero */
+.hero { padding-block: 72px 40px; row-gap: 32px; }
+.hero h1 {
+  grid-column: 1 / span 10;
+  font-weight: 300;
+  font-size: clamp(2.1rem, 1.2rem + 3.6vw, 4.35rem);
+  line-height: 1.06;
+  letter-spacing: -0.012em;
+  max-width: 19ch;
+}
+.hero .intro {
+  grid-column: 1 / span 7;
+  font-family: var(--f-display);
+  font-size: var(--s1);
+  line-height: 1.55;
+  max-width: 36em;
+  color: var(--ink);
+}
+.note {
+  font-family: var(--f-note);
+  font-size: 0.92rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+.note b { font-weight: 500; color: var(--ink); }
+.hero .note { grid-column: 9 / span 4; align-self: end; border-left: 1px solid var(--rule); padding-left: 16px; }
+.coord { font-family: var(--f-note); font-variant-numeric: tabular-nums; color: var(--ochre); font-size: 0.86rem; white-space: nowrap; }
+
+/* Figure 1: process flow */
+.flow-fig { margin: 8px 0 0; padding-block: 8px 0; }
+.flow-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+.flow-scroll svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.flow-fig .stroke { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; }
+.flow-fig .thin { stroke-width: 1; }
+.flow-fig .stream { fill: none; stroke: var(--blue); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.flow-fig .signal { stroke-dasharray: 6 5; }
+.flow-fig .tag { fill: var(--paper); stroke: var(--blue); stroke-width: 1.2; }
+.flow-fig .tagnum { fill: var(--blue); font-family: var(--f-note); font-size: 11px; font-weight: 500; text-anchor: middle; }
+.flow-fig .role { fill: var(--ochre); font-family: var(--f-display); font-style: italic; font-size: 15px; text-anchor: middle; }
+.flow-fig .org { fill: var(--ink); font-family: var(--f-body); font-weight: 500; font-size: 13.5px; text-anchor: middle; }
+.flow-fig .yrs { fill: var(--ink-2); font-family: var(--f-note); font-size: 12.5px; text-anchor: middle; font-variant-numeric: tabular-nums; }
+.flow-fig .bub { fill: var(--ink); font-family: var(--f-note); font-size: 10.5px; font-weight: 500; text-anchor: middle; }
+.flow-fig .arrowhead { fill: var(--blue); }
+.flow-fig .dot { fill: var(--ink-2); }
+.flow-fig .fade { stroke: var(--blue); stroke-width: 1.8; fill: none; stroke-dasharray: 2 6; stroke-linecap: round; opacity: 0.7; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .flow-fig .draw { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 0.9s ease-out forwards; }
+  .flow-fig .draw.signal { stroke-dasharray: none; }
+  .flow-fig .draw.d1 { animation-delay: 0.2s; }
+  .flow-fig .draw.d2 { animation-delay: 0.9s; }
+  .flow-fig .draw.d3 { animation-delay: 1.6s; }
+  .flow-fig .draw.d4 { animation-delay: 2.3s; }
+  .flow-fig .tag-g { opacity: 0; animation: show 0.3s ease-out forwards; }
+  .flow-fig .tag-g.d1 { animation-delay: 0.7s; } .flow-fig .tag-g.d2 { animation-delay: 1.4s; }
+  .flow-fig .tag-g.d3 { animation-delay: 2.1s; } .flow-fig .tag-g.d4 { animation-delay: 2.8s; }
+}
+@keyframes draw { to { stroke-dashoffset: 0; } }
+@keyframes show { to { opacity: 1; } }
+
+.stream-table-wrap { overflow-x: auto; margin-top: 18px; }
+.stream-table { border-collapse: collapse; width: 100%; min-width: 560px; font-size: 0.9rem; }
+.stream-table caption { text-align: left; font-family: var(--f-display); font-style: italic; color: var(--ink-2); padding-bottom: 8px; font-size: 1rem; caption-side: top; }
+.stream-table th, .stream-table td { text-align: left; vertical-align: top; padding: 7px 14px 7px 0; border-top: 1px solid var(--rule); }
+.stream-table th { font-family: var(--f-note); font-weight: 500; color: var(--ink-2); white-space: nowrap; }
+.stream-table td.n { font-family: var(--f-note); color: var(--blue); font-weight: 500; width: 2.5em; font-variant-numeric: tabular-nums; }
+.stream-table td.from { font-family: var(--f-note); color: var(--ink-2); white-space: nowrap; }
+.scroll-hint { display: none; font-family: var(--f-note); font-size: 0.82rem; color: var(--ochre); margin: 4px 0 0; }
+figcaption.fig { font-family: var(--f-note); font-size: 0.9rem; color: var(--ink-2); margin-top: 10px; max-width: 60em; }
+figcaption.fig .fn { color: var(--ink); font-weight: 500; margin-right: 0.4em; }
+
+/* Sections */
+.section { padding-block: 64px 0; row-gap: 22px; }
+.section > .sh {
+  grid-column: 1 / span 3;
+  font-size: var(--s3);
+  line-height: 1.1;
+  border-top: 2px solid var(--ink);
+  padding-top: 12px;
+  align-self: start;
+}
+.section > .body { grid-column: 4 / span 6; display: flex; flex-direction: column; gap: 22px; }
+.section > .side { grid-column: 10 / span 3; display: flex; flex-direction: column; gap: 18px; padding-top: 16px; }
+.section > .wide { grid-column: 4 / -1; }
+.lede { font-family: var(--f-display); font-size: var(--s1); line-height: 1.5; max-width: 34em; }
+.rule-top { border-top: 1px solid var(--rule); padding-top: 14px; }
+
+/* Focus list */
+.focus { margin: 0; display: flex; flex-direction: column; gap: 20px; }
+.focus div { display: grid; grid-template-columns: minmax(0, 11rem) minmax(0, 1fr); gap: 4px 24px; border-top: 1px solid var(--rule); padding-top: 12px; }
+.focus dt { font-family: var(--f-display); font-style: italic; font-size: 1.15rem; line-height: 1.3; }
+.focus dd { margin: 0; color: var(--ink); }
+
+/* Analysis: figure slots */
+.slots { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); column-gap: 28px; row-gap: 36px; }
+.slot { margin: 0; min-width: 0; }
+.slot-chart { grid-column: 1 / span 6; }
+.slot-chart-note { grid-column: 7 / span 3; align-self: end; }
+.slot-map { grid-column: 3 / span 7; }
+.slot-essay { grid-column: 1 / span 5; }
+.slot .frame {
+  position: relative;
+  background: var(--paper-2);
+  border: 1px dashed var(--rule);
+  border-radius: 3px;
+  max-width: 100%;
+  overflow: hidden;
+}
+.slot-chart .frame { aspect-ratio: 16 / 10; }
+.slot-map .frame { aspect-ratio: 16 / 9; }
+.slot .frame img { display: none; width: 100%; height: 100%; object-fit: contain; background: var(--paper); }
+.slot.has-media .frame { border-style: solid; background: var(--paper); }
+.slot.has-media .frame img { display: block; }
+.slot.has-media .empty { display: none; }
+.slot .empty { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: flex-end; padding: 16px 18px; }
+.slot .empty svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.slot .empty p { position: relative; font-family: var(--f-note); font-size: 0.9rem; color: var(--ink-2); max-width: 30em; }
+.slot .empty p b { color: var(--ink); font-weight: 500; }
+.placeholder { color: var(--ochre); font-style: italic; }
+.slot-essay .kicker { font-family: var(--f-note); color: var(--ink-2); font-size: 0.9rem; }
+.slot-essay h3 { font-size: var(--s2); line-height: 1.2; margin: 6px 0 10px; }
+.slot-essay p { max-width: 34em; }
+
+/* Analysis index */
+.index { list-style: none; margin: 0; padding: 0; }
+.index li {
+  display: grid;
+  grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) minmax(0, 14rem);
+  gap: 4px 24px;
+  padding-block: 14px;
+  border-top: 1px solid var(--rule);
+}
+.index li:last-child { border-bottom: 1px solid var(--rule); }
+.index .kind { font-family: var(--f-note); color: var(--ink-2); font-size: 0.92rem; padding-top: 3px; }
+.index .t { font-family: var(--f-display); font-size: 1.2rem; line-height: 1.35; }
+.index .t a { color: var(--ink); text-decoration-color: var(--rule); }
+.index .t a:hover { color: var(--blue); text-decoration-color: var(--blue); }
+.index .v { font-family: var(--f-note); color: var(--ink-2); font-size: 0.92rem; padding-top: 3px; }
+.index .v .role { display: block; color: var(--ochre); }
+a.pending { pointer-events: none; text-decoration: none; }
+a.pending::after { content: "link to follow"; margin-left: 0.6em; font-family: var(--f-note); font-size: 0.75rem; color: var(--ochre); white-space: nowrap; vertical-align: 0.15em; }
+
+/* Record */
+.record { list-style: none; margin: 0; padding: 0; }
+.record > li {
+  display: grid;
+  grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr);
+  gap: 6px 28px;
+  padding-block: 20px;
+  border-top: 1px solid var(--rule);
+}
+.record .when { font-family: var(--f-note); font-variant-numeric: tabular-nums; color: var(--ink-2); padding-top: 4px; font-size: 0.95rem; }
+.record h3 { font-size: 1.35rem; line-height: 1.25; }
+.record .where { color: var(--ink-2); font-size: 0.98rem; margin-top: 2px; display: flex; flex-wrap: wrap; gap: 2px 12px; align-items: baseline; }
+.record ul { margin: 10px 0 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: 6px; }
+.record ul li::marker { color: var(--ochre); }
+.record .sub { margin-top: 8px; }
+.subhead { font-family: var(--f-display); font-style: italic; font-size: 1.15rem; color: var(--ink-2); margin-top: 18px; }
+
+/* Recognition */
+.honours { list-style: none; margin: 0; padding: 0; }
+.honours li { display: grid; grid-template-columns: minmax(0, 7.5rem) minmax(0, 1fr); gap: 4px 28px; padding-block: 14px; border-top: 1px solid var(--rule); }
+.honours .when { font-family: var(--f-note); font-variant-numeric: tabular-nums; color: var(--ink-2); font-size: 0.95rem; padding-top: 2px; }
+.honours .what { font-weight: 500; }
+.honours .det { color: var(--ink-2); font-size: 0.98rem; }
+.training { font-size: 0.95rem; color: var(--ink-2); }
+.training b { color: var(--ink); font-weight: 500; }
+
+/* Contact */
+.contact-line { font-family: var(--f-display); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.3rem); line-height: 1.25; font-weight: 300; max-width: 22ch; }
+.contact-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.contact-list li { display: grid; grid-template-columns: minmax(0, 6rem) minmax(0, 1fr); gap: 4px 16px; align-items: baseline; border-top: 1px solid var(--rule); padding-top: 10px; }
+.contact-list .k { font-family: var(--f-note); color: var(--ink-2); font-size: 0.92rem; }
+.contact-list .v { overflow-wrap: anywhere; }
+.copy {
+  font: inherit; font-family: var(--f-note); font-size: 0.85rem;
+  color: var(--blue); background: none; border: 1px solid var(--rule); border-radius: 3px;
+  padding: 1px 8px; margin-left: 8px; cursor: pointer;
+}
+.copy:hover { border-color: var(--blue); }
+
+footer.colophon { padding-block: 72px 40px; }
+footer.colophon .grid { border-top: 1px solid var(--rule); padding-top: 16px; row-gap: 10px; }
+footer.colophon p { grid-column: span 6; font-family: var(--f-note); font-size: 0.85rem; color: var(--ink-2); }
+
+/* Narrow screens */
+@media (max-width: 900px) {
+  .hero h1 { grid-column: 1 / -1; }
+  .hero .intro { grid-column: 1 / -1; }
+  .hero .note { grid-column: 1 / -1; }
+  .section > .sh { grid-column: 1 / -1; }
+  .section > .body, .section > .side, .section > .wide { grid-column: 1 / -1; }
+  .section > .side { padding-top: 0; }
+  .slots { grid-template-columns: minmax(0, 1fr); }
+  .slot-chart, .slot-chart-note, .slot-map, .slot-essay { grid-column: 1 / -1; }
+  footer.colophon p { grid-column: 1 / -1; }
+}
+@media (max-width: 600px) {
+  .hero { padding-block: 44px 28px; }
+  .section { padding-block: 48px 0; }
+  .focus div, .record > li, .honours li { grid-template-columns: minmax(0, 1fr); }
+  .index li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .index .kind, .index .v { padding-top: 0; }
+  .stream-table { min-width: 0; font-size: 0.85rem; }
+  .stream-table td.from { white-space: normal; width: 7.5em; }
+  .scroll-hint { display: block; }
+  .masthead .what { display: block; margin-left: 0; }
+}
+
+/* ---------- Carbon Bender additions ---------- */
+.masthead .name em { font-style: italic; font-weight: 400; }
+.masthead nav a[aria-current="page"] { border-bottom-color: var(--ink); }
+
+/* Home: the wordmark rides a bent emissions curve, with the business-as-usual line it bends away from */
+.bend { padding-block: 40px 8px; row-gap: 20px; align-items: end; }
+.bend .mark { grid-column: 1 / span 9; }
+.bend .mark svg { display: block; width: 100%; height: auto; overflow: visible; }
+.bend .mark h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.bend-word { fill: var(--ink); font-family: var(--f-display); font-weight: 300; font-size: 104px; letter-spacing: -1px; }
+.bend-curve { fill: none; stroke: var(--blue); stroke-width: 2; stroke-linecap: round; }
+.bend-bau { fill: none; stroke: var(--ochre); stroke-width: 1.4; stroke-dasharray: 5 6; stroke-linecap: round; }
+.bend-lbl { fill: var(--ochre); font-family: var(--f-display); font-style: italic; font-size: 19px; }
+.bend-axis { fill: none; stroke: var(--rule); stroke-width: 1.2; }
+.bend-unit { fill: var(--ink-2); font-family: var(--f-note); font-size: 15px; }
+.bend .note { grid-column: 10 / span 3; border-left: 1px solid var(--rule); padding-left: 16px; margin-bottom: 18px; }
+.bend .standfirst { grid-column: 1 / span 7; font-family: var(--f-display); font-size: var(--s1); line-height: 1.5; max-width: 34em; }
+@media (prefers-reduced-motion: no-preference) {
+  .bend-curve { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.4s ease-out 0.2s forwards; }
+}
+
+/* Featured post */
+.feature { display: flex; flex-direction: column; gap: 10px; }
+.feature .meta, .post-meta { font-family: var(--f-note); color: var(--ink-2); font-size: 0.95rem; font-variant-numeric: tabular-nums; }
+.feature h3 { font-size: clamp(1.7rem, 1.2rem + 1.8vw, 2.6rem); line-height: 1.12; font-weight: 400; max-width: 20ch; }
+.feature h3 a { color: var(--ink); text-decoration: none; }
+.feature h3 a:hover { color: var(--blue); }
+.feature p.dek { font-family: var(--f-display); font-size: var(--s1); line-height: 1.5; max-width: 34em; }
+.read { font-weight: 500; }
+
+/* Writing index */
+.posts { list-style: none; margin: 0; padding: 0; }
+.posts li {
+  display: grid;
+  grid-template-columns: minmax(0, 7rem) minmax(0, 1fr) minmax(0, 9rem);
+  gap: 4px 24px;
+  padding-block: 16px;
+  border-top: 1px solid var(--rule);
+}
+.posts li:last-child { border-bottom: 1px solid var(--rule); }
+.posts time { font-family: var(--f-note); color: var(--ink-2); font-size: 0.92rem; font-variant-numeric: tabular-nums; padding-top: 4px; }
+.posts .t { font-family: var(--f-display); font-size: 1.3rem; line-height: 1.3; }
+.posts .t a { color: var(--ink); text-decoration-color: var(--rule); }
+.posts .t a:hover { color: var(--blue); text-decoration-color: var(--blue); }
+.posts .s { color: var(--ink-2); font-size: 0.98rem; margin-top: 4px; max-width: 40em; }
+.posts .topic { font-family: var(--f-note); color: var(--ochre); font-size: 0.92rem; padding-top: 4px; }
+.placeholder-row .t a, .placeholder-row .s { font-style: italic; }
+.placeholder-row .t a { color: var(--ochre); }
+
+/* About page heading */
+.about-hero { padding-block: 56px 32px; }
+
+/* Article */
+.article-head { padding-block: 56px 28px; display: flex; flex-direction: column; gap: 14px; max-width: 52rem; margin-left: clamp(0px, 8vw, 9rem); }
+.article-head h1 { font-weight: 300; font-size: clamp(2rem, 1.3rem + 2.8vw, 3.6rem); line-height: 1.08; letter-spacing: -0.01em; max-width: 22ch; }
+.article-head .dek { font-family: var(--f-display); font-size: var(--s1); line-height: 1.5; color: var(--ink-2); max-width: 36em; }
+.article-head .byline { font-family: var(--f-note); font-size: 0.95rem; color: var(--ink-2); border-top: 1px solid var(--rule); padding-top: 10px; display: flex; flex-wrap: wrap; gap: 4px 18px; }
+.article-head .byline b { color: var(--ink); font-weight: 500; }
+.prose {
+  max-width: 40rem;
+  margin-left: clamp(0px, 8vw, 9rem);
+  font-family: var(--f-display);
+  font-size: 1.2rem;
+  line-height: 1.68;
+}
+.prose > * + * { margin-top: 1.1em; }
+.prose h2 { font-family: var(--f-display); font-weight: 500; font-size: 1.55rem; line-height: 1.25; margin-top: 2em; }
+.prose h3 { font-family: var(--f-body); font-weight: 500; font-size: 1.05rem; margin-top: 1.8em; }
+.prose ul, .prose ol { padding-left: 1.2em; }
+.prose li + li { margin-top: 0.4em; }
+.prose li::marker { color: var(--ochre); }
+.prose blockquote { margin-left: 0; padding-left: 1.1em; border-left: 2px solid var(--ochre); font-style: italic; color: var(--ink-2); }
+.prose sup a { font-family: var(--f-note); font-size: 0.75em; text-decoration: none; padding: 0 1px; }
+.sn {
+  font-family: var(--f-note);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--ink-2);
+  border-left: 1px solid var(--rule);
+  padding-left: 12px;
+}
+.sn b { color: var(--ink); font-weight: 500; }
+.prose figure { margin-inline: 0; }
+.prose figure img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); background: var(--paper); }
+.prose .slot .frame { aspect-ratio: 16 / 10; }
+.prose figcaption.fig { margin-top: 10px; }
+.tbl-wrap { overflow-x: auto; }
+.prose table { border-collapse: collapse; width: 100%; font-family: var(--f-body); font-size: 0.92rem; line-height: 1.45; }
+.prose th, .prose td { text-align: left; padding: 8px 14px 8px 0; border-top: 1px solid var(--rule); vertical-align: top; }
+.prose th { font-family: var(--f-note); font-weight: 500; color: var(--ink-2); }
+.prose td.num, .prose th.num { text-align: right; font-variant-numeric: tabular-nums; }
+.sources { font-family: var(--f-note); font-size: 0.92rem; line-height: 1.5; color: var(--ink-2); padding-left: 1.4em; }
+.sources li + li { margin-top: 0.4em; }
+.endmatter { border-top: 2px solid var(--ink); padding-top: 12px; margin-top: 3em; }
+.endmatter .k { font-family: var(--f-body); font-weight: 500; font-size: 1rem; }
+.article-foot { max-width: 40rem; margin-left: clamp(0px, 8vw, 9rem); margin-top: 48px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; font-size: 0.98rem; }
+
+@media (min-width: 1100px) {
+  .sn { float: right; clear: right; width: 15rem; margin-right: -18rem; margin-top: 0.3em; }
+  .prose figure.wide { margin-right: -12rem; }
+}
+@media (max-width: 1099px) {
+  .sn { margin-block: 1em; }
+}
+
+/* Footer */
+.colophon .brand { font-family: var(--f-display); font-style: italic; color: var(--ink); font-size: 1rem; }
+
+@media (max-width: 900px) {
+  .bend .mark, .bend .note, .bend .standfirst { grid-column: 1 / -1; }
+  .bend .note { margin-bottom: 0; }
+}
+@media (max-width: 600px) {
+  .posts li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .posts time, .posts .topic { padding-top: 0; }
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+<!--
+  HOW TO WRITE A NEW POST
+  1. Make a copy of this file in the same "writing" folder.
+  2. Rename the copy using lower case and hyphens, e.g. indonesia-ccs-hubs.html
+  3. Open it in Notepad (Windows) or TextEdit (Mac, Format > Make Plain Text).
+  4. Replace the text between the EDIT markers. Keep the < > tags as they are.
+  5. Add a line for the post on the home page (index.html, under NEW POSTS GO HERE).
+  Also change the <title> and description at the very top of this file.
+-->
+  <header class="masthead">
+    <div>
+      <a class="name" href="../index.html"><em>Carbon Bender</em></a>
+      <span class="what">Notes on decarbonising heavy industry</span>
+    </div>
+    <nav aria-label="Site">
+      <a href="../index.html#writing" aria-current="page">Writing</a>
+      <a href="../about.html">About</a>
+      <a href="https://www.linkedin.com/in/tryabednego/" rel="noopener">LinkedIn</a>
+    </nav>
+  </header>
+
+  <header class="article-head">
+    <!-- EDIT: date and topic -->
+    <p class="post-meta"><time datetime="2026-11-07">7 Nov 2026</time>, <span class="placeholder">Topic</span></p>
+    <!-- EDIT: title -->
+    <h1 class="placeholder">Title of your essay, written as a plain statement or a question</h1>
+    <!-- EDIT: standfirst -->
+    <p class="dek">The standfirst: two sentences that tell the reader what question the piece answers and why it matters now.</p>
+    <p class="byline"><span>By <b>Try Hutomo Abednego</b></span><span><!-- EDIT: reading time -->6 minute read</span></p>
+  </header>
+
+  <article class="prose">
+    <!-- EDIT: body text starts here. Each paragraph sits between <p> and </p>. -->
+    <p>Open with the claim. The first paragraph should tell a busy reader what you think and why, in a few sentences. Everything after it is the evidence.</p>
+
+    <aside class="sn"><b>Sidenote.</b> Short asides, definitions and caveats go in the margin on wide screens and between paragraphs on phones.</aside>
+    <p>Write the way you would brief a colleague: plain verbs, real numbers, named sources. Cite a source with a small number like this one.<sup><a href="#s1" id="r1">1</a></sup></p>
+
+    <h2>A section heading</h2>
+    <p>Use two or three headings in a longer piece so readers can scan it. Lists work for genuinely parallel items:</p>
+    <ul>
+      <li>a first point that stands on its own,</li>
+      <li>a second point of the same kind,</li>
+      <li>and a third.</li>
+    </ul>
+
+    <!-- FIGURE: save the image in the images folder, then change the file name after src="../images/ -->
+    <figure class="slot wide">
+      <div class="frame">
+        <img src="../images/example-chart.png" alt="Describe what the chart shows for readers who cannot see it" onload="this.closest('.slot').classList.add('has-media')">
+        <div class="empty" aria-hidden="true">
+          <svg viewBox="0 0 160 100" preserveAspectRatio="none">
+            <path d="M14,8 V86 H152" fill="none" stroke="var(--rule)" stroke-width="0.8" vector-effect="non-scaling-stroke"/>
+            <path d="M14,66 H152 M14,46 H152 M14,26 H152" fill="none" stroke="var(--rule)" stroke-width="0.6" stroke-dasharray="2 3" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <p><b>Figure slot.</b> Put a chart or map in the images folder and name it in this figure’s src.</p>
+        </div>
+      </div>
+      <figcaption class="fig"><span class="fn">Fig. 1</span><span class="placeholder">What the figure shows and the one thing to take from it. Source: name, year.</span></figcaption>
+    </figure>
+
+    <p>Tables suit small sets of numbers that readers will compare. Keep units in the header.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Option</th><th class="num">Value (unit)</th><th class="num">Value (unit)</th></tr></thead>
+        <tbody>
+          <tr><td class="placeholder">Option A</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+          <tr><td class="placeholder">Option B</td><td class="num">0.0</td><td class="num">0.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <blockquote>Use a quotation block for a short passage from a regulation or report, with its source in the notes.</blockquote>
+
+    <h2>What this means</h2>
+    <p>Close with the implication: what should a company, regulator or investor do differently, and what would change your mind.</p>
+
+    <section class="endmatter">
+      <p class="k">Notes and sources</p>
+      <ol class="sources">
+        <li id="s1">Author or organisation, <i>Title of the source</i>, year. <a href="ADD-LINK-HERE">Link</a></li>
+      </ol>
+    </section>
+  </article>
+
+  <div class="article-foot">
+    <a href="../index.html#writing">All writing</a>
+    <a href="../about.html">About the author</a>
+  </div>
+
+  <footer class="colophon">
+    <div class="grid">
+      <p><span class="brand">Carbon Bender</span> is written by Try Hutomo Abednego in Jakarta. Views are my own and do not represent my current or former employers.</p>
+      <p>Set in Spectral and IBM Plex. Figures and maps are my own unless credited. © 2026 Try Hutomo Abednego.</p>
+    </div>
+  </footer>
+</div>
+<script>
+  // Wordmark: place "Bender" after "Carbon" and start the bend in the gap between the words.
+  function fitBend() {
+    var c = document.getElementById('cb-carbon'), b = document.getElementById('cb-bender');
+    if (!c || !b || !c.getComputedTextLength) return;
+    var w = c.getComputedTextLength(); if (!w) return;
+    var gap = 30, k = 44 + w + gap / 2, y = 190 - 0.05 * (k - 24);
+    b.setAttribute('x', (44 + w + gap).toFixed(1));
+    document.getElementById('cb-curve').setAttribute('d', 'M24,190 L' + k.toFixed(1) + ',' + y.toFixed(1) + ' C' + (k + 135).toFixed(1) + ',' + (y - 6).toFixed(1) + ' ' + (k + 295).toFixed(1) + ',' + (y + 33).toFixed(1) + ' 884,246');
+    document.getElementById('cb-bau').setAttribute('d', 'M' + k.toFixed(1) + ',' + y.toFixed(1) + ' L884,' + (y - 0.05 * (884 - k)).toFixed(1));
+  }
+  fitBend();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitBend);
+  // Links still marked ADD-LINK-HERE show as plain text with a small "link to follow" note.
+  document.querySelectorAll('a[href*="ADD-LINK"]').forEach(function (a) {
+    a.classList.add('pending'); a.setAttribute('aria-disabled', 'true'); a.removeAttribute('href');
+  });
+  // Image slots: show the picture once it has loaded, otherwise keep the dashed placeholder.
+  document.querySelectorAll('.slot img').forEach(function (img) {
+    if (img.complete && img.naturalWidth > 0) img.closest('.slot').classList.add('has-media');
+  });
+  var btn = document.getElementById('copy-email');
+  if (btn) btn.addEventListener('click', function () {
+    var el = document.getElementById('email'), text = el.textContent;
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    var fallback = function () { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); btn.textContent = 'Selected'; };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+  });
+</script>
+</body>
+</html>
